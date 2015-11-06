@@ -56,10 +56,7 @@ struct cell {
 			return false;
 		return true;
 	}
-	bool operator<(const cell x) const
-	{
-		return col < x.col;
-	}
+
 private:
 	int only_one_diff(cell& x) {
 		int n = 0, index = -1;
@@ -118,19 +115,27 @@ void the_table(vector<cell>& start, int col)
 		for (int i = 0; i < col_size[col][k];i++)
 			if (table[col][k][i].prime)
 			{
-				for (int i = 0;i<)
-				primeI.push_back(table[col][k][i]);
+				bool add = true;
+				for (int j = 0; j < primeI.size();j++)
+				{
+					if (table[col][k][i].name == primeI[j].name)
+					{
+						add = false;
+						break;
+					}
+				}
+				if(add)
+					primeI.push_back(table[col][k][i]);
+			}
 				
 	}
 	the_table(nextcolumn, col + 1);
 }
 void gadallah()
 {
-	vector<cell> primes(primeI.begin(), primeI.end());
-	for (set<cell>::iterator i = primeI.begin();i != primeI.end();i++)
-		cout <<	i->name << endl;
-	for (int i = 0; i < primes.size();i++)
-		cout << primes[i].name << endl;
+	
+	for (int i = 0; i < primeI.size();i++)
+		cout << primeI[i].name << endl;
 	//given the prime implicants as a vector of a vector<int>... we need to get the essintial ones and the rest of pimes used.
 }
 int main()
